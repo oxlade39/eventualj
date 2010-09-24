@@ -25,7 +25,8 @@ public class EventuallyTest {
         assertThat(eventually(ten()).getValue(), willBe(10));
     }
 
-    @Test public void eventuallyDoesNotJustMatchAnyOldValue() throws Exception {
+    @Test(expected = AssertionError.class)
+    public void eventuallyDoesNotJustMatchAnyOldValue() throws Exception {
         assertThat(eventually(ten()).getValue(), willBe(11));
     }
 
