@@ -13,19 +13,20 @@ import static org.junit.Assert.assertThat;
 
 public class EventuallyTest {
 
-    @Test
-    public void withoutEventualyWeGetNull() throws Exception {
+    @Test public void withoutEventuallyWeGetNull() throws Exception {
         assertThat(ten().getValue(), nullValue());
     }
 
-    @Test
-    public void withEventuallyICanAssertWhatTheValueWillEventuallyReturn() throws Exception {
+    @Test public void withEventuallyICanAssertWhatTheValueWillEventuallyReturn() throws Exception {
         assertThat(eventually(ten()).getValue(), willReturn(10));
     }
 
-    @Test
-    public void withEventuallyICanAssertWhatTheValueWillEventuallyBe() throws Exception {
+    @Test public void withEventuallyICanAssertWhatTheValueWillEventuallyBe() throws Exception {
         assertThat(eventually(ten()).getValue(), willBe(10));
+    }
+
+    @Test public void eventuallyDoesNotJustMatchAnyOldValue() throws Exception {
+        assertThat(eventually(ten()).getValue(), willBe(11));
     }
 
     public static InThread ten() {
