@@ -20,8 +20,7 @@ public class EventuallyTest {
 
     @Test
     public void withEventuallyICanAssertWhatTheValueWillEventualReturn() throws Exception {
-        InThread inThread = eventually(ten());
-        assertThat(inThread.getValue(), willReturn(10));
+        assertThat(eventually(ten()).getValue(), willReturn(10));
     }
 
     @Test
