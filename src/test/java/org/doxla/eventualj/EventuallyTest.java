@@ -5,8 +5,8 @@ import org.junit.Test;
 import java.util.concurrent.TimeUnit;
 
 import static org.doxla.eventualj.Eventually.eventually;
-import static org.doxla.eventualj.Eventually.willBe;
-import static org.doxla.eventualj.Eventually.willReturn;
+import static org.doxla.eventualj.EventuallyMatchers.willBe;
+import static org.doxla.eventualj.EventuallyMatchers.willReturn;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;

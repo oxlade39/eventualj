@@ -1,39 +1,46 @@
 package org.doxla.eventualj;
 
-import ch.lambdaj.proxy.ProxyUtil;
-import org.hamcrest.Matcher;
+import static ch.lambdaj.proxy.ProxyUtil.createArgumentProxy;
 
-import static com.google.code.tempusfugit.temporal.Timeout.timeout;
-import static com.google.code.tempusfugit.temporal.WaitFor.waitOrTimeout;
-import static java.lang.String.format;
+public final class Eventually {
 
-public class Eventually {
+    static final State state = new State();
 
-    private static RecordingEventualContext context;
+    private Eventually(){}
 
     public static <T> T eventually(T value) {
-        if(context != null) throw new IllegalStateException("You must call a matcher on each eventual before creating a new eventual");
+        sanityCheckState();
 
         Class<T> valueClass = (Class<T>) value.getClass();
         RecordingEventualContext<T> eventualContext = new RecordingEventualContext<T>(value);
-        T proxy = ProxyUtil.createArgumentProxy(new MatchingIvocationInterceptor<T>(
+        T proxy = createArgumentProxy(new MatchingIvocationInterceptor<T>(
                 eventualContext), valueClass);
-        context = eventualContext;
+        state.setContext(eventualContext);
         return proxy;
     }
 
-    public static <T> Matcher<T> willReturn(final T expected) {
-        return new EventuallyMatcher<T>(expected, getAndClear());
+    private static <T> void sanityCheckState() {
+        if(state.get() != null) throw new IllegalStateException("You must call a matcher on each eventual before creating a new eventual");
     }
 
-    public static <T> Matcher<T> willBe(final T expected) {
-        return new EventuallyMatcher<T>(expected, getAndClear());
-    }
+    static final class State {
 
-    public static RecordingEventualContext getAndClear() {
-        RecordingEventualContext local = context;
-        context = null;
-        return local;
+        final RecordingEventualContext get() {
+            return context.get();
+        }
+
+        final RecordingEventualContext getAndClear() {
+            RecordingEventualContext local = context.get();
+            context.set(null);
+            return local;
+        }
+
+        private void setContext(RecordingEventualContext toSet) {
+            context.set(toSet);
+        }
+
+        private ThreadLocal<RecordingEventualContext> context = new ThreadLocal<RecordingEventualContext>();
+
     }
 
 

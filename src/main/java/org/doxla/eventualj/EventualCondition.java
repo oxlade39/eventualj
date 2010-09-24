@@ -10,7 +10,7 @@ class EventualCondition<T> implements Condition {
         return new EventualCondition<T>(expected, context);
     }
 
-    EventualCondition(T expected, RecordingEventualContext eventualContext) {
+    private EventualCondition(T expected, RecordingEventualContext eventualContext) {
         this.expected = expected;
         this.eventualContext = eventualContext;
     }
