@@ -19,12 +19,12 @@ public class EventuallyTest {
     }
 
     @Test
-    public void withEventuallyICanAssertWhatTheValueWillEventualReturn() throws Exception {
+    public void withEventuallyICanAssertWhatTheValueWillEventuallyReturn() throws Exception {
         assertThat(eventually(ten()).getValue(), willReturn(10));
     }
 
     @Test
-    public void withEventuallyICanAssertWhatTheValueWillEventualBe() throws Exception {
+    public void withEventuallyICanAssertWhatTheValueWillEventuallyBe() throws Exception {
         assertThat(eventually(ten()).getValue(), willBe(10));
     }
 
