@@ -22,4 +22,4 @@ Examples
 
 `assertThat(ten().getValue(), is(10)); // fails, ten()'s value hasn't been set yet`
 
-`assertThat(eventually(messageQueue).isEmpty(), willBe(true)); // passes eventually`
+`assertThat(eventually(messageQueue).isEmpty(), willBe(true).within(millis(100))); // passes eventually`
