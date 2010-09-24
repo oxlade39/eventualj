@@ -1,7 +1,7 @@
 eventualj
 ====================
 
-Eventual assertions
+Eventual assertions, for Java
 
 What is eventualj
 ---------------------
@@ -10,6 +10,7 @@ Often you will come across such scenarios when testing multithreaded application
 
 Imagine the scenario where your application consumes messages from queues asynchronously. You want to test that when you put a message on the inbound queue it gets consumed. Because the message is consumed asynchronous you can't write an immediate assertion. Wouldn't it be nice if you could just write:
 `whenIPutAMessageOnTheInboundQueue();
+
 `assertThat(eventually(inboundQueue).isEmpty, willBe(true));`
 
 
