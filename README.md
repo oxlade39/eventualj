@@ -28,3 +28,5 @@ Examples
 `assertThat(ten().getValue(), is(10)); // fails, ten()'s value hasn't been set yet`
 
 `assertThat(eventually(messageQueue).isEmpty(), willBe(true).within(millis(100))); // passes eventually`
+
+For a more complete example see the **Queue** producer and consumer example test [here](http://github.com/oxlade39/eventualj/blob/master/src/test/java/org/doxla/eventualj/ExampleTest.java)
