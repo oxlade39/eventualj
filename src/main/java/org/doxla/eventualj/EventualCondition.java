@@ -16,7 +16,6 @@ class EventualCondition<T> implements Condition {
     }
 
     public boolean isSatisfied() {
-        Object valueAtThisPointInTime = eventualContext.tryMethod();
-        return expected.equals(valueAtThisPointInTime);
+        return expected.equals(eventualContext.tryMethod());
     }
 }
