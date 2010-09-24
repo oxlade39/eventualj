@@ -12,6 +12,7 @@ Imagine the scenario where your application consumes messages from queues asynch
 `whenIPutAMessageOnTheInboundQueue();
 `assertThat(eventually(inboundQueue).isEmpty, willBe(true));`
 
+
 Examples
 ---------------------
 
