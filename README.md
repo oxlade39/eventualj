@@ -19,6 +19,6 @@ Examples
 
 `assertThat(eventually(ten()).getValue(), willBe(10)); // passes`
 
-`assertThat(ten().getValue(), is(10)); // fails, then()'s value hasn't been set yet`
+`assertThat(ten().getValue(), is(10)); // fails, ten()'s value hasn't been set yet`
 
 `assertThat(eventually(messageQueue).isEmpty(), willBe(true)); // passes eventually`
