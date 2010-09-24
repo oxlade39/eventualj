@@ -25,22 +25,19 @@ public class ExampleTest {
     private BlockingQueue<String> queue = new ArrayBlockingQueue<String>(10);
     private ExecutorService executorService;
 
-    @Before
-    public void createProducerAndConsumerOnABlockingQueue() throws Exception {
+    @Before public void createProducerAndConsumerOnABlockingQueue() throws Exception {
         executorService = Executors.newFixedThreadPool(2);
         queue.put("initial");
         executorService.submit(new Producer(queue));
         executorService.submit(new Consumer(queue));
     }
 
-    @After
-    public void shutdown() {
+    @After public void shutdown() {
         executorService.shutdownNow();
     }
 
 
-    @Test
-    public void exampleTest() throws Exception {
+    @Test public void exampleTest() throws Exception {
         assertThat("Queue is not empty yet", 
                 queue.size(), is(not(0)));
         assertThat("But eventually it will be",
