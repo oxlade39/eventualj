@@ -8,11 +8,11 @@ public final class EventuallyMatchers {
 
     private EventuallyMatchers(){}
 
-    public static <T> Matcher<T> willReturn(final T expected) {
+    public static <T> EventuallyMatcher<T> willReturn(final T expected) {
         return new EventuallyMatcher<T>(expected, state.getAndClear());
     }
 
-    public static <T> Matcher<T> willBe(final T expected) {
+    public static <T> EventuallyMatcher<T> willBe(final T expected) {
         return new EventuallyMatcher<T>(expected, state.getAndClear());
     }
 }

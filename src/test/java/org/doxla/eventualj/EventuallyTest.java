@@ -1,9 +1,12 @@
 package org.doxla.eventualj;
 
+import com.google.code.tempusfugit.temporal.Duration;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
 
+import static com.google.code.tempusfugit.temporal.Duration.millis;
+import static com.google.code.tempusfugit.temporal.Duration.seconds;
 import static org.doxla.eventualj.Eventually.eventually;
 import static org.doxla.eventualj.EventuallyMatchers.willBe;
 import static org.doxla.eventualj.EventuallyMatchers.willReturn;
@@ -28,6 +31,15 @@ public class EventuallyTest {
     @Test(expected = AssertionError.class)
     public void eventuallyDoesNotJustMatchAnyOldValue() throws Exception {
         assertThat(eventually(ten()).getValue(), willBe(11));
+    }
+
+    @Test public void withEventuallyICanAssertWhatTheValueWillEventuallyBeWithinAGivenTime() throws Exception {
+        assertThat(eventually(ten()).getValue(), willBe(10).within(seconds(10)));
+    }
+
+    @Test(expected = AssertionError.class)
+    public void eventuallyUsingWithinWithLowDurationWillFail() throws Exception {
+        assertThat(eventually(ten()).getValue(), willBe(10).within(millis(1)));
     }
 
     public static InThread ten() {

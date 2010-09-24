@@ -1,5 +1,6 @@
 package org.doxla.eventualj;
 
+import com.google.code.tempusfugit.temporal.Duration;
 import com.google.code.tempusfugit.temporal.Timeout;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
@@ -15,7 +16,7 @@ import static org.doxla.eventualj.EventualCondition.condition;
 class EventuallyMatcher<T> extends BaseMatcher<T> {
     private final T expected;
     private final RecordingEventualContext eventualContext;
-    private final Timeout timeout;
+    private Timeout timeout;
 
     EventuallyMatcher(T expected, RecordingEventualContext<T> eventualContext) {
         this(expected, eventualContext, timeout(seconds(1L)));
@@ -25,6 +26,11 @@ class EventuallyMatcher<T> extends BaseMatcher<T> {
         this.expected = expected;
         this.eventualContext = eventualContext;
         this.timeout = timeout;
+    }
+
+    public EventuallyMatcher<T> within(Duration duration) {
+        this.timeout = timeout(duration);
+        return this;
     }
 
     public boolean matches(Object o) {
