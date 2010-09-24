@@ -34,6 +34,6 @@ class EventuallyMatcher<T> extends BaseMatcher<T> {
     }
 
     public void describeTo(Description description) {
-        description.appendText(format("Timeout occured before %s was returned", expected));
+        description.appendText(format("Timeout occurred before %s was returned", expected));
     }
 }
