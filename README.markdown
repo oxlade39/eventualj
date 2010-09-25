@@ -18,7 +18,7 @@ How it works
 ------------
 eventualj's **eventually** method returns a type safe proxy allowing you write a test asserting against the return value of one of its methods. Or more specifically, its eventual value.
 
-Because the eventually proxy is type safe, you get all your usual refactoring and IDE autocompletion features for free.
+Because the eventually proxy is type safe, you get all your usual IDE refactoring and autocompletion features for free.
 
 Examples
 --------
