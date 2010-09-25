@@ -48,14 +48,14 @@
             <uniqueVersion>false</uniqueVersion>
             <id>local-file-based</id>
             <name>Local Repository</name>
-            <url>scp://localhost:/proj/maven/repo/repository</url>
+            <url>file//~/proj/maven/repo/repository</url>
             <layout>default</layout>
         </repository>
         <snapshotRepository>
             <uniqueVersion>true</uniqueVersion>
             <id>local-file-based-snapshots</id>
             <name>Local Snapshot Repository</name>
-            <url>scp://localhost:/proj/maven/repo/snapshotRepository</url>
+            <url>file//~/proj/maven/repo/snapshotRepository</url>
             <layout>legacy</layout>
         </snapshotRepository>
     </distributionManagement>
