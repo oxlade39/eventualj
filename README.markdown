@@ -31,8 +31,4 @@ For a more complete example see the **Queue** producer and consumer example test
 
 Maven projects
 --------------
-Add this repository to your pom.xml
-<pre><code>&lt;repository&gt;
-    &lt;id&gt;oxlade39-github&lt;/id&gt;
-    &lt;url&gt;http://github.com/oxlade39/my-repo/tree/master&lt;/url&gt;
-&lt;/repository&gt;</code></pre>
+eventualj isn't currently release in a public maven repository. If you want it, stop by and add a plus 1 to the [issue](http://github.com/oxlade39/eventualj/issues#issue/3)
