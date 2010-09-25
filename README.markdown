@@ -1,7 +1,7 @@
 eventualj
 ====================
 
-Eventual assertions, for Java.
+Eventual assertions, for Java.  
 Making asynchronous assertions elegant.
 
 What is eventualj
