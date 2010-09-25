@@ -31,4 +31,4 @@ For a more complete example see the **Queue** producer and consumer example test
 
 Maven projects
 --------------
-eventualj isn't currently release in a public maven repository. If you want it, stop by and add a plus 1 to the [issue](http://github.com/oxlade39/eventualj/issues#issue/3)
+eventualj isn't currently released in a public maven repository. If you want it, stop by and add a plus 1 to the [issue](http://github.com/oxlade39/eventualj/issues#issue/3)
