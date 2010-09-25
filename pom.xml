@@ -3,7 +3,7 @@
 
     <groupId>org.doxla</groupId>
     <artifactId>eventualj</artifactId>
-    <version>1.1</version>
+    <version>1.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>eventualj</name>
     <url>http://maven.apache.org</url>
