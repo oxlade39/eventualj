@@ -28,3 +28,11 @@ assertThat(ten().getValue(), is(10)); // fails, ten()'s value hasn't been set ye
 assertThat(eventually(messageQueue).isEmpty(), willBe(true).within(millis(100))); // passes eventually</code></pre>
 
 For a more complete example see the **Queue** producer and consumer example test [here](http://github.com/oxlade39/eventualj/blob/master/src/test/java/org/doxla/eventualj/ExampleTest.java)
+
+Maven projects
+--------------
+Add this repository to your pom.xml
+<pre><code>&lt;repository&gt;
+    &lt;id&gt;oxlade39-github&lt;/id&gt;
+    &lt;url&gt;http://github.com/oxlade39/my-repo/tree/master&lt;/url&gt;
+&lt;/repository&gt;</code></pre>
