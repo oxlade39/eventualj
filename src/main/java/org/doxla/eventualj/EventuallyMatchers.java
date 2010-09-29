@@ -1,6 +1,6 @@
 package org.doxla.eventualj;
 
-import org.hamcrest.Matcher;
+import org.doxla.eventualj.matcher.EventuallyMatcher;
 
 import static org.doxla.eventualj.Eventually.state;
 

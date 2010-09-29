@@ -1,7 +1,7 @@
-package org.doxla.eventualj;
+package org.doxla.eventualj.matcher;
 
 import com.google.code.tempusfugit.temporal.Duration;
-import com.google.code.tempusfugit.temporal.Timeout;
+import org.doxla.eventualj.RecordingEventualContext;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 
@@ -10,18 +10,18 @@ import java.util.concurrent.TimeoutException;
 import static com.google.code.tempusfugit.temporal.Duration.seconds;
 import static com.google.code.tempusfugit.temporal.WaitFor.waitOrTimeout;
 import static java.lang.String.format;
-import static org.doxla.eventualj.EventualCondition.condition;
+import static org.doxla.eventualj.matcher.EventualCondition.condition;
 
-class EventuallyMatcher<T> extends BaseMatcher<T> {
+public class EventuallyMatcher<T> extends BaseMatcher<T> {
     private final T expected;
     private final RecordingEventualContext eventualContext;
     private Duration timeout;
 
-    EventuallyMatcher(T expected, RecordingEventualContext<T> eventualContext) {
+    public EventuallyMatcher(T expected, RecordingEventualContext<T> eventualContext) {
         this(expected, eventualContext, seconds(1L));
     }
 
-    EventuallyMatcher(T expected, RecordingEventualContext<T> eventualContext, Duration timeout) {
+    public EventuallyMatcher(T expected, RecordingEventualContext<T> eventualContext, Duration timeout) {
         this.expected = expected;
         this.eventualContext = eventualContext;
         this.timeout = timeout;

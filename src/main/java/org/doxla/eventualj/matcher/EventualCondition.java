@@ -1,6 +1,7 @@
-package org.doxla.eventualj;
+package org.doxla.eventualj.matcher;
 
 import com.google.code.tempusfugit.temporal.Condition;
+import org.doxla.eventualj.RecordingEventualContext;
 
 class EventualCondition<T> implements Condition {
     private final T expected;

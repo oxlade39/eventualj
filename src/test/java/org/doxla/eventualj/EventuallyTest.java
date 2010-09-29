@@ -1,6 +1,5 @@
 package org.doxla.eventualj;
 
-import com.google.code.tempusfugit.temporal.Duration;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;

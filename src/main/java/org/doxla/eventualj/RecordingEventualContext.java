@@ -3,7 +3,7 @@ package org.doxla.eventualj;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-class RecordingEventualContext<T> {
+public class RecordingEventualContext<T> {
     private final T realSystemUnderTest;
     private T proxySystemUnderTest;
     private Method methodUnderTest;
