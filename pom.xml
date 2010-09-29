@@ -3,7 +3,7 @@
 
     <groupId>org.doxla</groupId>
     <artifactId>eventualj</artifactId>
-    <version>0.3-SNAPSHOT</version>
+    <version>0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>eventualj</name>
     <url>http://maven.apache.org</url>
@@ -47,20 +47,15 @@
         <url>scm:git:git@github.com:oxlade39/eventualj.git</url>
         <developerConnection>scm:git:git@github.com:oxlade39/eventualj.git</developerConnection>
     </scm>
-    <distributionManagement>
+  <distributionManagement>
         <repository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>local-file-based</id>
-            <name>Local Repository</name>
-            <url>file:///Users/danoxlade/proj/maven/repo/repository</url>
-            <layout>default</layout>
+            <id>netstream-repository</id>
+            <url>http://teamcity.is.uk.easynet.net:8081/artifactory/libs-releases-local</url>
         </repository>
         <snapshotRepository>
+            <id>netstream-snapshots</id>
             <uniqueVersion>true</uniqueVersion>
-            <id>local-file-based-snapshots</id>
-            <name>Local Snapshot Repository</name>
-            <url>file:///Users/danoxlade/proj/maven/repo/snapshotRepository</url>
-            <layout>legacy</layout>
+            <url>http://teamcity.is.uk.easynet.net:8081/artifactory/libs-snapshots-local</url>
         </snapshotRepository>
     </distributionManagement>
 
