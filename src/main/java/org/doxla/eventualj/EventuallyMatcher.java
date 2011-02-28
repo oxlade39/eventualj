@@ -14,7 +14,7 @@ import static java.lang.String.format;
 import static org.doxla.eventualj.EventualCondition.condition;
 import static org.hamcrest.core.IsEqual.equalTo;
 
-class EventuallyMatcher<T> extends BaseMatcher<T> {
+public class EventuallyMatcher<T> extends BaseMatcher<T> {
     private final Matcher<T> expected;
     private final RecordingEventualContext<T> eventualContext;
     private Duration timeout;
