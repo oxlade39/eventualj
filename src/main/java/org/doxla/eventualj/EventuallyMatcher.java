@@ -4,6 +4,7 @@ import com.google.code.tempusfugit.temporal.Duration;
 import com.google.code.tempusfugit.temporal.Timeout;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
+import org.hamcrest.Matcher;
 
 import java.util.concurrent.TimeoutException;
 
@@ -11,18 +12,27 @@ import static com.google.code.tempusfugit.temporal.Duration.seconds;
 import static com.google.code.tempusfugit.temporal.WaitFor.waitOrTimeout;
 import static java.lang.String.format;
 import static org.doxla.eventualj.EventualCondition.condition;
+import static org.hamcrest.core.IsEqual.equalTo;
 
 class EventuallyMatcher<T> extends BaseMatcher<T> {
-    private final T expected;
-    private final RecordingEventualContext eventualContext;
+    private final Matcher<T> expected;
+    private final RecordingEventualContext<T> eventualContext;
     private Duration timeout;
 
     EventuallyMatcher(T expected, RecordingEventualContext<T> eventualContext) {
-        this(expected, eventualContext, seconds(1L));
+        this(equalTo(expected), eventualContext, seconds(1L));
     }
 
     EventuallyMatcher(T expected, RecordingEventualContext<T> eventualContext, Duration timeout) {
-        this.expected = expected;
+        this(equalTo(expected), eventualContext, timeout);
+    }
+
+    EventuallyMatcher(Matcher<T> subMatcher, RecordingEventualContext<T> eventualContext) {
+        this(subMatcher, eventualContext, seconds(1L));
+    }
+
+    EventuallyMatcher(Matcher<T> subMatcher, RecordingEventualContext<T> eventualContext, Duration timeout) {
+        this.expected = subMatcher;
         this.eventualContext = eventualContext;
         this.timeout = timeout;
     }

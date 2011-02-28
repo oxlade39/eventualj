@@ -11,6 +11,7 @@ import static org.doxla.eventualj.Eventually.eventually;
 import static org.doxla.eventualj.EventuallyMatchers.willBe;
 import static org.doxla.eventualj.EventuallyMatchers.willReturn;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
@@ -26,6 +27,10 @@ public class EventuallyTest {
 
     @Test public void withEventuallyICanAssertWhatTheValueWillEventuallyBe() throws Exception {
         assertThat(eventually(ten()).getValue(), willBe(10));
+    }
+
+    @Test public void withEventuallyICanNestMatchers() throws Exception {
+        assertThat(eventually(ten()).getValue(), willBe(greaterThan(9)));
     }
 
     @Test(expected = AssertionError.class)
