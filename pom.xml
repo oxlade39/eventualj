@@ -7,13 +7,16 @@
         <version>7</version>
     </parent>
 
-    <groupId>org.doxla</groupId>
+    <!-- <groupId>org.doxla</groupId> -->
+	<groupId>no.antares</groupId>
+	
     <artifactId>eventualj</artifactId>
     <version>0.5-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>eventualj</name>
 
-    <url>https://github.com/oxlade39/eventualj</url>
+    <!-- <url>https://github.com/oxlade39/eventualj</url> -->
+    <url>https://github.com/AntaTom/eventualj</url>
     <inceptionYear>2010</inceptionYear>
 	<description>
         Eventual assertions, for Java.
@@ -59,11 +62,21 @@
 		</dependency>
 	</dependencies>
 
-    <scm>
+    <!-- <scm>
         <connection>scm:git:git@github.com:oxlade39/eventualj.git</connection>
         <url>scm:git:git@github.com:oxlade39/eventualj.git</url>
         <developerConnection>scm:git:git@github.com:oxlade39/eventualj.git</developerConnection>
-    </scm>
+    </scm> -->
+	<scm>
+		<connection>scm:git:git@github.com:AntaTom/eventualj.git</connection>
+		<developerConnection>scm:git:git@github.com:AntaTom/eventualj.git</developerConnection>
+		<url>https://github.com/AntaTom/eventualj</url>
+	</scm>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/AntaTom/eventualj/issues</url>
+	</issueManagement>
+    
 	<developers>
 		<developer>
 			<id>doxla</id>
@@ -83,6 +96,7 @@
 			</roles>
 		</developer>
 	</developers>
+
 
     <build>
         <plugins>
