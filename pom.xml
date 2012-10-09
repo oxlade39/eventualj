@@ -64,6 +64,25 @@
         <url>scm:git:git@github.com:oxlade39/eventualj.git</url>
         <developerConnection>scm:git:git@github.com:oxlade39/eventualj.git</developerConnection>
     </scm>
+	<developers>
+		<developer>
+			<id>doxla</id>
+			<name>Dan Oxlade</name>
+			<roles>
+				<role>Owner</role>
+				<role>Developer</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>tsk</id>
+			<name>Tommy Skodje</name>
+			<email>tsk AT antares DOT no</email>
+			<organization>Antares Gruppen AS (http://www.antares.no)</organization>
+			<roles>
+				<role>Publisher</role>
+			</roles>
+		</developer>
+	</developers>
 
     <build>
         <plugins>
