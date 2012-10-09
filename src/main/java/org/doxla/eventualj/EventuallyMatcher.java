@@ -1,18 +1,18 @@
 package org.doxla.eventualj;
 
-import com.google.code.tempusfugit.temporal.Duration;
-import com.google.code.tempusfugit.temporal.Timeout;
-import org.hamcrest.BaseMatcher;
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-
-import java.util.concurrent.TimeoutException;
-
 import static com.google.code.tempusfugit.temporal.Duration.seconds;
 import static com.google.code.tempusfugit.temporal.WaitFor.waitOrTimeout;
 import static java.lang.String.format;
 import static org.doxla.eventualj.EventualCondition.condition;
-import static org.hamcrest.core.IsEqual.equalTo;
+
+import java.util.concurrent.TimeoutException;
+
+import org.hamcrest.BaseMatcher;
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.core.IsEqual;
+
+import com.google.code.tempusfugit.temporal.Duration;
 
 public class EventuallyMatcher<T> extends BaseMatcher<T> {
     private final Matcher<T> expected;
@@ -20,11 +20,11 @@ public class EventuallyMatcher<T> extends BaseMatcher<T> {
     private Duration timeout;
 
     EventuallyMatcher(T expected, RecordingEventualContext<T> eventualContext) {
-        this(equalTo(expected), eventualContext, seconds(1L));
+        this( new IsEqual<T>(expected), eventualContext, seconds(1L));
     }
 
     EventuallyMatcher(T expected, RecordingEventualContext<T> eventualContext, Duration timeout) {
-        this(equalTo(expected), eventualContext, timeout);
+        this( new IsEqual<T>(expected), eventualContext, timeout);
     }
 
     EventuallyMatcher(Matcher<T> subMatcher, RecordingEventualContext<T> eventualContext) {

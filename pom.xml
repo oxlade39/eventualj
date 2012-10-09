@@ -1,74 +1,102 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.doxla</groupId>
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+    <!-- <groupId>org.doxla</groupId> -->
+	<groupId>no.antares</groupId>
+	
     <artifactId>eventualj</artifactId>
-    <version>0.5-SNAPSHOT</version>
+    <version>0.6-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>eventualj</name>
-    <url>http://maven.apache.org</url>
 
+    <!-- <url>https://github.com/oxlade39/eventualj</url> -->
+    <url>https://github.com/AntaTom/eventualj</url>
+    <inceptionYear>2010</inceptionYear>
+	<description>
+        Eventual assertions, for Java.
+        Making asynchronous assertions elegant.
+	</description>
+	
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit-dep</artifactId>
-            <version>4.8.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-            <version>1.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.googlecode.lambdaj</groupId>
-            <artifactId>lambdaj</artifactId>
-            <version>2.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.tempus-fugit</groupId>
-            <artifactId>tempus-fugit</artifactId>
-            <version>1.0</version>
-        </dependency>
-    </dependencies>
+		<dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit-dep</artifactId>
+		    <version>4.10</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.hamcrest</groupId>
+		    <artifactId>hamcrest-core</artifactId>
+		    <version>1.2</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>com.googlecode.lambdaj</groupId>
+		    <artifactId>lambdaj</artifactId>
+		    <version>2.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.tempus-fugit</groupId>
+			<artifactId>tempus-fugit</artifactId>
+			<version>1.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>junit</groupId>
+					<artifactId>junit</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.hamcrest</groupId>
+					<artifactId>hamcrest-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
 
-    <repositories>
-        <repository>
-            <id>java.net</id>
-            <url>http://download.java.net/maven/2</url>
-        </repository>
-        <repository>
-            <id>oxlade39-github</id>
-            <url>http://github.com/oxlade39/my-repo/tree/master</url>
-        </repository>
-    </repositories>
-
-    <scm>
+    <!-- <scm>
         <connection>scm:git:git@github.com:oxlade39/eventualj.git</connection>
         <url>scm:git:git@github.com:oxlade39/eventualj.git</url>
         <developerConnection>scm:git:git@github.com:oxlade39/eventualj.git</developerConnection>
-    </scm>
-    <distributionManagement>
-        <repository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>local-file-based</id>
-            <name>Local Repository</name>
-            <url>file:///Users/danoxlade/proj/maven/repo/repository</url>
-            <layout>default</layout>
-        </repository>
-        <snapshotRepository>
-            <uniqueVersion>true</uniqueVersion>
-            <id>local-file-based-snapshots</id>
-            <name>Local Snapshot Repository</name>
-            <url>file:///Users/danoxlade/proj/maven/repo/snapshotRepository</url>
-            <layout>legacy</layout>
-        </snapshotRepository>
-    </distributionManagement>
+    </scm> -->
+	<scm>
+		<connection>scm:git:git@github.com:AntaTom/eventualj.git</connection>
+		<developerConnection>scm:git:git@github.com:AntaTom/eventualj.git</developerConnection>
+		<url>https://github.com/AntaTom/eventualj</url>
+	</scm>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/AntaTom/eventualj/issues</url>
+	</issueManagement>
+    
+	<developers>
+		<developer>
+			<id>doxla</id>
+			<name>Dan Oxlade</name>
+			<roles>
+				<role>Owner</role>
+				<role>Developer</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>tsk</id>
+			<name>Tommy Skodje</name>
+			<email>tsk AT antares DOT no</email>
+			<organization>Antares Gruppen AS (http://www.antares.no)</organization>
+			<roles>
+				<role>Publisher</role>
+			</roles>
+		</developer>
+	</developers>
+
 
     <build>
         <plugins>
@@ -80,12 +108,65 @@
                     <target>1.5</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.0-beta-9</version>
-            </plugin>
-        </plugins>
-    </build>
-    
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<includes>
+								<include>${basedir}/src/main/java/**</include>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+   	<profiles>
+		<profile>
+			<id>release-sign-artifacts</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.1</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 </project>
